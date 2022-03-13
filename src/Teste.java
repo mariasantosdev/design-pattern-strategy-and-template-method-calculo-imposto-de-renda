@@ -4,7 +4,7 @@ public class Teste {
     public static void main(String[] args) {
         CalculaImpostoDeRenda calculaImpostoDeRenda = new CalculaImpostoDeRenda();
         PessoaFisica pessoaFisica = new PessoaFisica(new BigDecimal("3000.00"));
-        BigDecimal calcular = calculaImpostoDeRenda.calcular(TipoDoImpostoDeRenda.MEDIO_ALTO,pessoaFisica);
+        BigDecimal calcular = calculaImpostoDeRenda.calcular(pessoaFisica);
         System.out.println(calcular);
     }
 }
