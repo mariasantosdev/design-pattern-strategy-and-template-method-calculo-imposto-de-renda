@@ -3,6 +3,7 @@ package renda;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
+//TODO alterar para colocar a aliquiota
 public enum TipoDoImpostoDeRenda {
 
     BAIXO(new ImpostoDeRendaIsento()),
@@ -17,6 +18,7 @@ public enum TipoDoImpostoDeRenda {
         this.calculadoraImpostoDeRenda = calculadoraImpostoDeRenda;
     }
 
+    //TODO criar um teste para esse metodo
     public static BigDecimal calcularImpostoDeRenda(BigDecimal valor) {
         return Arrays.stream(TipoDoImpostoDeRenda.values())
                 .filter(t -> t.aplica(valor))
@@ -26,7 +28,7 @@ public enum TipoDoImpostoDeRenda {
     }
 
     private boolean aplica(BigDecimal salario) {
-        return calculadoraImpostoDeRenda.aplica(salario);
+        return calculadoraImpostoDeRenda.deveAplicarPara(salario);
     }
 
     private BigDecimal calcula(BigDecimal salario) {

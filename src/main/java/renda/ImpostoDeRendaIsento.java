@@ -9,13 +9,13 @@ public class ImpostoDeRendaIsento implements CalculadoraImpostoDeRenda {
     private final BigDecimal VALOR_MAXIMO = new BigDecimal("1903.97");
 
     @Override
-    public boolean aplica(BigDecimal salario) {
+    public boolean deveAplicarPara(BigDecimal salario) {
         return salario.compareTo(VALOR_MAXIMO) <= 0;
     }
 
     @Override
     public BigDecimal calcula(BigDecimal salario) {
-        if(!aplica(salario)) throw new RuntimeException("Salario não se aplica para essa regra");
+        if(!deveAplicarPara(salario)) throw new RuntimeException("Salario não se aplica para essa regra");
         return ZERO;
     }
 }

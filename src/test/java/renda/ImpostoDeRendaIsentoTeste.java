@@ -21,7 +21,7 @@ public class ImpostoDeRendaIsentoTeste {
     @DisplayName("deve retornar verdadeiro se salario for menor que o valor maximo")
     void aplica__deve_retornar_verdadeiro_se_salario_for_menor_que_o_valor_maximo(BigDecimal salario, boolean deveSerAplicado) {
         ImpostoDeRendaIsento impostoDeRendaIsento = new ImpostoDeRendaIsento();
-        Assertions.assertThat(impostoDeRendaIsento.aplica(salario)).isEqualTo(deveSerAplicado);
+        Assertions.assertThat(impostoDeRendaIsento.deveAplicarPara(salario)).isEqualTo(deveSerAplicado);
     }
 
     @ParameterizedTest
@@ -32,7 +32,7 @@ public class ImpostoDeRendaIsentoTeste {
     @DisplayName("deve retornar falso se salario for maior ou igual que o valor maximo")
     void aplica__deve_retornar_falso_se_salario_for_maior_ou_igual_que_o_valor_maximo(BigDecimal salario, boolean deveSerAplicado) {
         ImpostoDeRendaIsento impostoDeRendaIsento = new ImpostoDeRendaIsento();
-        Assertions.assertThat(impostoDeRendaIsento.aplica(salario)).isEqualTo(deveSerAplicado);
+        Assertions.assertThat(impostoDeRendaIsento.deveAplicarPara(salario)).isEqualTo(deveSerAplicado);
     }
 
     @ParameterizedTest

@@ -13,36 +13,37 @@ public class ImpostoDeRendaTetoTeste {
 
     @ParameterizedTest
     @CsvSource({
-            "4664.68, true",
-            "4664.69, true",
-            "15000.00, true",
-    })
-    @DisplayName("deve retornar verdadeiro se salario for maior que o valor minimo")
-    void aplica__deve_retornar_verdadeiro_se_salario_for_maior_que_o_valor_minimo(BigDecimal salario, boolean deveSerAplicado) {
-        ImpostoDeRendaTeto impostoDeRendaTeto = new ImpostoDeRendaTeto();
-        Assertions.assertThat(impostoDeRendaTeto.aplica(salario)).isEqualTo(deveSerAplicado);
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "4664.67, false",
-            "1903.90, false",
-    })
-    @DisplayName("deve retornar falso se salario for menor que o valor minimo")
-    void aplica__deve_retornar_falso_se_salario_for_menor_que_o_valor_minimo(BigDecimal salario, boolean deveSerAplicado) {
-        ImpostoDeRendaTeto impostoDeRendaTeto = new ImpostoDeRendaTeto();
-        Assertions.assertThat(impostoDeRendaTeto.aplica(salario)).isEqualTo(deveSerAplicado);
-    }
-
-    @ParameterizedTest
-    @CsvSource({
             "4664.68",
             "4664.69",
+            "15000.00"
+    })
+    @DisplayName("deve retornar verdadeiro se salario for maior que o valor minimo")
+    void aplica__deve_retornar_verdadeiro_se_salario_for_maior_que_o_valor_minimo(BigDecimal salario) {
+        ImpostoDeRendaTeto impostoDeRendaTeto = new ImpostoDeRendaTeto();
+        Assertions.assertThat(impostoDeRendaTeto.deveAplicarPara(salario)).isTrue();
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "4664.67",
+            "1903.90"
+    })
+    @DisplayName("deve retornar falso se salario for menor que o valor minimo")
+    void aplica__deve_retornar_falso_se_salario_for_menor_que_o_valor_minimo(BigDecimal salario) {
+        ImpostoDeRendaTeto impostoDeRendaTeto = new ImpostoDeRendaTeto();
+        Assertions.assertThat(impostoDeRendaTeto.deveAplicarPara(salario)).isFalse();
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "4664.68, 1282.79",
+            "4664.69, 1282.79",
+            "15000.00, 4125.00",
     })
     @DisplayName("deve retornar valor do desconto se deve aplicar desconto")
-    void calcula__deve_retornar_valor_do_desconto_se_deve_aplicar_desconto(BigDecimal salario) {
+    void calcula__deve_retornar_valor_do_desconto_se_deve_aplicar_desconto(BigDecimal salario, BigDecimal valorDoDesconto) {
         ImpostoDeRendaTeto impostoDeRendaTeto = new ImpostoDeRendaTeto();
-        Assertions.assertThat(impostoDeRendaTeto.calcula(salario)).isEqualTo(new BigDecimal("869.36"));
+        Assertions.assertThat(impostoDeRendaTeto.calcula(salario)).isEqualTo(valorDoDesconto);
     }
 
     @ParameterizedTest
