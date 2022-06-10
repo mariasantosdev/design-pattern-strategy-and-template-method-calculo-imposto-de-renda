@@ -3,14 +3,13 @@ package renda;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-//TODO alterar para colocar a aliquiota
 public enum TipoDoImpostoDeRenda {
 
-    BAIXO(new ImpostoDeRendaIsento()),
-    MEDIO_BAIXO(new ImpostoDeRendaMedioBaixo()),
-    MEDIO_ALTO(new ImpostoDeRendaMedioAlto()),
-    ALTO(new ImpostoDeRendaAlto()),
-    TETO(new ImpostoDeRendaTeto());
+    ISENTO(new ImpostoDeRendaIsento()),
+    SETE_E_MEIO(new ImpostoDeRendaMedioBaixo()),
+    QUINZE(new ImpostoDeRendaMedioAlto()),
+    VINTE_E_DOIS_E_MEIO(new ImpostoDeRendaAlto()),
+    VINTE_E_SETE_E_MEIO(new ImpostoDeRendaTeto());
 
     private final CalculadoraImpostoDeRenda calculadoraImpostoDeRenda;
 
@@ -18,7 +17,6 @@ public enum TipoDoImpostoDeRenda {
         this.calculadoraImpostoDeRenda = calculadoraImpostoDeRenda;
     }
 
-    //TODO criar um teste para esse metodo
     public static BigDecimal calcularImpostoDeRenda(BigDecimal valor) {
         return Arrays.stream(TipoDoImpostoDeRenda.values())
                 .filter(t -> t.aplica(valor))
