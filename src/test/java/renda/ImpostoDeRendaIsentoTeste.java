@@ -45,18 +45,6 @@ public class ImpostoDeRendaIsentoTeste {
     @DisplayName("deve retornar zero se nao deve se aplicar desconto")
     void calcula__deve_retornar_zero_se_nao_deve_se_aplicar_desconto(BigDecimal salario) {
         ImpostoDeRendaIsento impostoDeRendaIsento = new ImpostoDeRendaIsento();
-        Assertions.assertThat(impostoDeRendaIsento.calcula(salario)).isZero();
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "1903.98",
-            "2003.99",
-    })
-    @DisplayName("deve lancar excecao se o salario for maior que o valor maximo")
-    void calcula__deve_lancar_excecao_se_o_salario_for_maior_que_o_valor_maximo(BigDecimal salario) {
-       assertThatExceptionOfType(RuntimeException.class)
-               .isThrownBy(() -> new ImpostoDeRendaIsento().calcula(salario))
-               .withMessage("Salario não se aplica para essa regra");
+        Assertions.assertThat(impostoDeRendaIsento.efetuarCalculo(salario)).isZero();
     }
 }

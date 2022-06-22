@@ -7,6 +7,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.math.BigDecimal;
 
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+
 public class TipoDoImpostoDeRendaTeste {
     @ParameterizedTest
     @CsvSource({

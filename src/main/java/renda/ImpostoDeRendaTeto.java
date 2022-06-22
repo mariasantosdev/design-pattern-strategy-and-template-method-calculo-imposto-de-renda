@@ -13,8 +13,7 @@ public class ImpostoDeRendaTeto implements CalculadoraImpostoDeRenda {
     }
 
     @Override
-    public BigDecimal calcula(BigDecimal salario) {
-        if(!deveAplicarPara(salario)) throw new RuntimeException("Salario não se aplica para essa regra");
+    public BigDecimal efetuarCalculo(BigDecimal salario) {
         return (salario.multiply(new BigDecimal("0.275")).setScale(2, RoundingMode.HALF_UP));
     }
 }

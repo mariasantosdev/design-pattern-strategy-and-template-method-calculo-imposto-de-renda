@@ -21,7 +21,7 @@ public enum TipoDoImpostoDeRenda {
         return Arrays.stream(TipoDoImpostoDeRenda.values())
                 .filter(t -> t.aplica(valor))
                 .findFirst()
-                .map(i -> i.calcula(valor))
+                .map(i -> i.calcular(valor))
                 .orElseThrow();
     }
 
@@ -29,7 +29,7 @@ public enum TipoDoImpostoDeRenda {
         return calculadoraImpostoDeRenda.deveAplicarPara(salario);
     }
 
-    private BigDecimal calcula(BigDecimal salario) {
-        return calculadoraImpostoDeRenda.calcula(salario);
+    private BigDecimal calcular(BigDecimal salario) {
+        return calculadoraImpostoDeRenda.calcular(salario);
     }
 }
