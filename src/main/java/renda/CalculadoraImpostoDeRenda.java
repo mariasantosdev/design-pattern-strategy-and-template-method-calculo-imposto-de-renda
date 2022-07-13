@@ -4,11 +4,9 @@ import java.math.BigDecimal;
 
 public interface CalculadoraImpostoDeRenda {
 
-    default BigDecimal calcular(BigDecimal salario) {
+    default boolean deveAplicarPara(BigDecimal salario) {
         if (!deveAplicarPara(salario)) throw new RuntimeException("Salario não se aplica para essa regra");
-        else return efetuarCalculo(salario);
+        else return true;
     }
-
-    boolean deveAplicarPara(BigDecimal salario);
     BigDecimal efetuarCalculo(BigDecimal salario);
 }
