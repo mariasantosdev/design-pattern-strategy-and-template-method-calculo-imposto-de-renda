@@ -15,6 +15,8 @@ public class ImpostoDeRendaAlto implements CalculadoraImpostoDeRenda {
 
     @Override
     public BigDecimal efetuarCalculo(BigDecimal salario) {
-        return (salario.multiply(new BigDecimal("0.225")).setScale(2, RoundingMode.HALF_UP));
+        return (salario.multiply(new BigDecimal("0.225"))
+                .subtract(new BigDecimal("636.13"))
+                .setScale(2, RoundingMode.HALF_UP));
     }
 }

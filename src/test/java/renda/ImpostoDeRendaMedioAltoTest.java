@@ -46,10 +46,10 @@ public class ImpostoDeRendaMedioAltoTest {
 
     @ParameterizedTest
     @CsvSource({
-            "3751.05, 562.66",
-            "2826.65, 424.00",
-            "2826.66, 424.00",
-            "3000.80, 450.12",
+            "3751.05, 207.86",
+            "2826.65, 69.20",
+            "2826.66, 69.20",
+            "3000.80, 95.32",
     })
     @DisplayName("deve retornar valor do desconto se deve aplicar desconto")
     void calcula__deve_retornar_valor_do_desconto_se_deve_aplicar_desconto(BigDecimal salario, BigDecimal valorDoDesconto) {

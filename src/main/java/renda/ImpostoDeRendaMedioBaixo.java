@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 
 public class ImpostoDeRendaMedioBaixo implements CalculadoraImpostoDeRenda {
 
-    private final BigDecimal VALOR_MINIMO = new BigDecimal("1903.98");
+    private final BigDecimal VALOR_MINIMO = new BigDecimal("1903.99");
     private final BigDecimal VALOR_MAXIMO = new BigDecimal("2826.65");
 
     @Override
@@ -15,6 +15,8 @@ public class ImpostoDeRendaMedioBaixo implements CalculadoraImpostoDeRenda {
 
     @Override
     public BigDecimal efetuarCalculo(BigDecimal salario) {
-        return (salario.multiply(new BigDecimal("0.075")).setScale(2, RoundingMode.HALF_UP));
+        return (salario.multiply(new BigDecimal("0.075"))
+                .subtract(new BigDecimal("142.80"))
+                .setScale(2, RoundingMode.HALF_UP));
     }
 }
