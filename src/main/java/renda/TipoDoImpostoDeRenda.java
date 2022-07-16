@@ -22,7 +22,7 @@ public enum TipoDoImpostoDeRenda {
                 .filter(t -> t.aplica(valor))
                 .findFirst()
                 .map(i -> i.calcular(valor))
-                .orElseThrow();
+                .orElseThrow(() -> new RuntimeException("Salario não se aplica para essa regra"));
     }
 
     private boolean aplica(BigDecimal salario) {
