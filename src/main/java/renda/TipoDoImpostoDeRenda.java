@@ -30,6 +30,6 @@ public enum TipoDoImpostoDeRenda {
     }
 
     private BigDecimal calcular(BigDecimal salario) {
-        return calculadoraImpostoDeRenda.calcular(salario);
+        return calculadoraImpostoDeRenda.efetuarCalculo(salario);
     }
 }

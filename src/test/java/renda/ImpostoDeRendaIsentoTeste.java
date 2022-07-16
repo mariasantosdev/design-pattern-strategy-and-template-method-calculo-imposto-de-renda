@@ -7,8 +7,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.math.BigDecimal;
 
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-
 public class ImpostoDeRendaIsentoTeste {
 
     @ParameterizedTest
@@ -16,6 +14,7 @@ public class ImpostoDeRendaIsentoTeste {
             "1800.00",
             "1903.00",
             "1903.97",
+            "1903.98",
             "0"
     })
     @DisplayName("deve retornar verdadeiro se salario for menor que o valor maximo")
@@ -26,7 +25,7 @@ public class ImpostoDeRendaIsentoTeste {
 
     @ParameterizedTest
     @CsvSource({
-            "1903.98",
+            "1903.99",
             "2003.99"
     })
     @DisplayName("deve retornar falso se salario for maior ou igual que o valor maximo")

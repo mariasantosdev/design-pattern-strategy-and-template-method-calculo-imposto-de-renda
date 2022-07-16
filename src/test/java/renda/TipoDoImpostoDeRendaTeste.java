@@ -7,21 +7,25 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.math.BigDecimal;
 
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-
 public class TipoDoImpostoDeRendaTeste {
     @ParameterizedTest
     @CsvSource({
             "0, 0",
-            "1903.97, 0",
-            "2826.64, 212.00",
-            "1903.98, 142.80",
-            "3751.05, 562.66",
-            "2826.65, 424.00",
-            "4294.94, 966.36",
-            "4664.67, 1049.55",
-            "4664.69, 1282.79",
-            "15000.00, 4125.00"
+            "1903.98, 0",
+            "1903.99, 0.00",
+            "2826.64, 69.20",
+            "1903.99, 0.00",
+            "2826.65, 69.20",
+            "3751.05, 207.86",
+            "2826.65, 69.20",
+            "2826.66, 69.20",
+            "3000.80, 95.32",
+            "3751.60, 207.98",
+            "3751.07, 207.86",
+            "4294.94, 330.23",
+            "4664.68, 413.42",
+            "4664.69, 413.43",
+            "15000.00, 3255.64"
     })
     @DisplayName("deve calcular imposto de renda se aplicar a regra")
     void deve_calcular_imposto_de_renda_se_o_valor_se_aplica_a_regra(BigDecimal valorASerCalculado, BigDecimal valorDoDesconto) {

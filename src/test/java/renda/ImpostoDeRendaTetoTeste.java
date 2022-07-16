@@ -13,7 +13,6 @@ public class ImpostoDeRendaTetoTeste {
 
     @ParameterizedTest
     @CsvSource({
-            "4664.68",
             "4664.69",
             "15000.00"
     })
@@ -26,6 +25,7 @@ public class ImpostoDeRendaTetoTeste {
     @ParameterizedTest
     @CsvSource({
             "4664.67",
+            "4664.68",
             "1903.90"
     })
     @DisplayName("deve retornar falso se salario for menor que o valor minimo")
@@ -36,9 +36,8 @@ public class ImpostoDeRendaTetoTeste {
 
     @ParameterizedTest
     @CsvSource({
-            "4664.68, 1282.79",
-            "4664.69, 1282.79",
-            "15000.00, 4125.00",
+            "4664.69, 413.43",
+            "15000.00, 3255.64",
     })
     @DisplayName("deve retornar valor do desconto se deve aplicar desconto")
     void calcula__deve_retornar_valor_do_desconto_se_deve_aplicar_desconto(BigDecimal salario, BigDecimal valorDoDesconto) {

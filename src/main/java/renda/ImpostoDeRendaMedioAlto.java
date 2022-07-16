@@ -10,7 +10,7 @@ public class ImpostoDeRendaMedioAlto implements CalculadoraImpostoDeRenda {
 
     @Override
     public boolean deveAplicarPara(BigDecimal salario) {
-        return salario.compareTo(VALOR_MINIMO) >= 0 && salario.compareTo(VALOR_MAXIMO) <= -1;
+        return salario.compareTo(VALOR_MINIMO) >= 0 && salario.compareTo(VALOR_MAXIMO) <= 0;
     }
 
     @Override

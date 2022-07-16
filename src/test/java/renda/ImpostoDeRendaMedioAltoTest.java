@@ -7,14 +7,14 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.math.BigDecimal;
 
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-
 public class ImpostoDeRendaMedioAltoTest {
+
     @ParameterizedTest
     @CsvSource({
+            "2826.66",
+            "2826.67",
             "3751.05",
-            "2826.65",
-            "2826.66"
+            "3751.04"
     })
     @DisplayName("deve retornar verdadeiro se salario for menor que o valor maximo e maior que o valor minimo")
     void aplica__deve_retornar_verdadeiro_se_salario_for_menor_que_o_valor_maximo_e_maior_que_o_valor_minimo(BigDecimal salario) {
@@ -25,21 +25,13 @@ public class ImpostoDeRendaMedioAltoTest {
     @ParameterizedTest
     @CsvSource({
             "3751.07",
+            "2826,65",
             "3751.06",
-    })
-    @DisplayName("deve retornar falso se salario for maior ou igual que o valor maximo")
-    void aplica__deve_retornar_falso_se_salario_for_maior__ou_igual_que_o_valor_maximo(BigDecimal salario) {
-        ImpostoDeRendaMedioAlto impostoDeRendaMedioAlto = new ImpostoDeRendaMedioAlto();
-        Assertions.assertThat(impostoDeRendaMedioAlto.deveAplicarPara(salario)).isFalse();
-    }
-
-    @ParameterizedTest
-    @CsvSource({
             "2826.64",
-            "1903.90",
+            "1903.90"
     })
-    @DisplayName("deve retornar falso se salario for menor que o valor minimo")
-    void aplica__deve_retornar_falso_se_salario_for_menor_que_o_valor_minimo(BigDecimal salario) {
+    @DisplayName("deve retornar falso se salario nao se encaixar na faixa de valor")
+    void aplica__deve_retornar_falso_se_salario_nao_se_encaixar_na_faixa_de_valor(BigDecimal salario) {
         ImpostoDeRendaMedioAlto impostoDeRendaMedioAlto = new ImpostoDeRendaMedioAlto();
         Assertions.assertThat(impostoDeRendaMedioAlto.deveAplicarPara(salario)).isFalse();
     }
