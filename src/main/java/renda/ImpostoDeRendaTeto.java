@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 
 public class ImpostoDeRendaTeto implements CalculadoraImpostoDeRenda {
 
-    private final BigDecimal VALOR_MINIMO = new BigDecimal("4664.68");
+    private final static BigDecimal VALOR_MINIMO = new BigDecimal("4664.68");
 
     @Override
     public boolean deveAplicarPara(BigDecimal salario) {

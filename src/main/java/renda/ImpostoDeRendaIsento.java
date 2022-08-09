@@ -6,7 +6,7 @@ import static java.math.BigDecimal.ZERO;
 
 public class ImpostoDeRendaIsento implements CalculadoraImpostoDeRenda {
 
-    private final BigDecimal VALOR_MAXIMO = new BigDecimal("1903.98");
+    private final static BigDecimal VALOR_MAXIMO = new BigDecimal("1903.98");
 
     @Override
     public boolean deveAplicarPara(BigDecimal salario) {

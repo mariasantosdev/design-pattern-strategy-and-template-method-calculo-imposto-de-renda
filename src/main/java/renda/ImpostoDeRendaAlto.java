@@ -5,8 +5,8 @@ import java.math.RoundingMode;
 
 public class ImpostoDeRendaAlto implements CalculadoraImpostoDeRenda {
 
-    private final BigDecimal VALOR_MINIMO = new BigDecimal("3751.06");
-    private final BigDecimal VALOR_MAXIMO = new BigDecimal("4664.68");
+    private final static BigDecimal VALOR_MINIMO = new BigDecimal("3751.06");
+    private final static BigDecimal VALOR_MAXIMO = new BigDecimal("4664.68");
 
     @Override
     public boolean deveAplicarPara(BigDecimal salario) {
