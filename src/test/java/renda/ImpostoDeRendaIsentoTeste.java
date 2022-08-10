@@ -7,6 +7,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.math.BigDecimal;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
+
 public class ImpostoDeRendaIsentoTeste {
 
     @ParameterizedTest
@@ -45,5 +47,17 @@ public class ImpostoDeRendaIsentoTeste {
     void calcula__deve_retornar_zero_se_nao_deve_se_aplicar_desconto(BigDecimal salario) {
         ImpostoDeRendaIsento impostoDeRendaIsento = new ImpostoDeRendaIsento();
         Assertions.assertThat(impostoDeRendaIsento.efetuarCalculo(salario)).isZero();
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1903.99",
+            "2003.99",
+    })
+    @DisplayName("deve lancar excecao se o salario for maior que o valor maximo")
+    void calcula__deve_lancar_excecao_se_o_salario_for_maior_que_o_valor_maximo(BigDecimal salario) {
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> new ImpostoDeRendaIsento().calcular(salario))
+                .withMessage("Salario não se aplica para essa regra");
     }
 }

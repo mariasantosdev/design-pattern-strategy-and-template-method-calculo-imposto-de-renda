@@ -19,17 +19,12 @@ public enum TipoDoImpostoDeRenda {
 
     public static BigDecimal calcularImpostoDeRenda(BigDecimal valor) {
         return Arrays.stream(TipoDoImpostoDeRenda.values())
-                .filter(t -> t.aplica(valor))
-                .findFirst()
                 .map(i -> i.calcular(valor))
-                .orElseThrow(() -> new RuntimeException("Salario não se aplica para essa regra"));
-    }
-
-    private boolean aplica(BigDecimal salario) {
-        return calculadoraImpostoDeRenda.deveAplicarPara(salario);
+                .findAny()
+                .orElseThrow(RuntimeException::new);
     }
 
     private BigDecimal calcular(BigDecimal salario) {
-        return calculadoraImpostoDeRenda.efetuarCalculo(salario);
+        return calculadoraImpostoDeRenda.calcular(salario);
     }
 }

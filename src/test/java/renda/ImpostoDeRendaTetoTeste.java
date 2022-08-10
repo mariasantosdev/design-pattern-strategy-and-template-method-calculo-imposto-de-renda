@@ -44,4 +44,17 @@ public class ImpostoDeRendaTetoTeste {
         ImpostoDeRendaTeto impostoDeRendaTeto = new ImpostoDeRendaTeto();
         Assertions.assertThat(impostoDeRendaTeto.efetuarCalculo(salario)).isEqualTo(valorDoDesconto);
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "4664.67",
+            "0.00",
+            "4664.60",
+    })
+    @DisplayName("deve lancar excecao se o salario for maior que o valor maximo ou menor que o valor minimo")
+    void calcula__deve_lancar_excecao_se_o_salario_for_maior_que_o_valor_maximo_ou_menor_que_o_valor_minimo(BigDecimal salario) {
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> new ImpostoDeRendaTeto().calcular(salario))
+                .withMessage("Salario não se aplica para essa regra");
+    }
 }
