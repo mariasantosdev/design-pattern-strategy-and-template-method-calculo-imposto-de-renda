@@ -1,4 +1,4 @@
-package renda;
+package test.java.br.com.maria.imposto.renda;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

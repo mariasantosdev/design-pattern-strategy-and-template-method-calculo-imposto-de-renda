@@ -1,4 +1,4 @@
-package renda;
+package main.java.br.com.maria.imposto.renda;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
