@@ -1,4 +1,4 @@
-package test.java.br.com.maria.imposto.renda;
+package br.com.maria.imposto.renda;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -57,7 +57,7 @@ public class ImpostoDeRendaIsentoTeste {
     @DisplayName("deve lancar excecao se o salario for maior que o valor maximo")
     void calcula__deve_lancar_excecao_se_o_salario_for_maior_que_o_valor_maximo(BigDecimal salario) {
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> new ImpostoDeRendaIsento().calcular(salario))
+                .isThrownBy(() -> new ImpostoDeRendaIsento().efetuarCalculo(salario))
                 .withMessage("Salario não se aplica para essa regra");
     }
 }

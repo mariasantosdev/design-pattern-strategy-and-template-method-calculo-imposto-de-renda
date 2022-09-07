@@ -1,4 +1,4 @@
-package main.java.br.com.maria.imposto.renda;
+package br.com.maria.imposto.renda;
 
 import java.math.BigDecimal;
 
@@ -9,11 +9,7 @@ public class PessoaFisica {
         this.salario = new BigDecimal(salario);
     }
 
-    public BigDecimal getSalario() {
-        return salario;
-    }
-
     public BigDecimal calcularSalarioLiquido() {
-        return TipoDoImpostoDeRenda.calcularImpostoDeRenda(this.getSalario());
+        return TipoDoImpostoDeRenda.calcularImpostoDeRenda(this.salario);
     }
 }

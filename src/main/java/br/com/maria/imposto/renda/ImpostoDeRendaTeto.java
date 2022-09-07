@@ -1,4 +1,4 @@
-package main.java.br.com.maria.imposto.renda;
+package br.com.maria.imposto.renda;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -14,6 +14,7 @@ public class ImpostoDeRendaTeto implements CalculadoraImpostoDeRenda {
 
     @Override
     public BigDecimal efetuarCalculo(BigDecimal salario) {
+        if(!deveAplicarPara(salario)) throw new RuntimeException("Salario não se aplica para essa regra");
         return (salario.multiply(new BigDecimal("0.275"))
                 .subtract(new BigDecimal("869.36"))
                 .setScale(2, RoundingMode.HALF_UP));

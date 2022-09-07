@@ -1,4 +1,4 @@
-package main.java.br.com.maria.imposto.renda;
+package br.com.maria.imposto.renda;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -15,6 +15,7 @@ public class ImpostoDeRendaMedioBaixo implements CalculadoraImpostoDeRenda {
 
     @Override
     public BigDecimal efetuarCalculo(BigDecimal salario) {
+        if(!deveAplicarPara(salario)) throw new RuntimeException("Salario não se aplica para essa regra");
         return (salario.multiply(new BigDecimal("0.075"))
                 .subtract(new BigDecimal("142.80"))
                 .setScale(2, RoundingMode.HALF_UP));

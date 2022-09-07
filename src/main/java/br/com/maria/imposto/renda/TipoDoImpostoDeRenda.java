@@ -1,4 +1,4 @@
-package main.java.br.com.maria.imposto.renda;
+package br.com.maria.imposto.renda;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -6,10 +6,10 @@ import java.util.Arrays;
 public enum TipoDoImpostoDeRenda {
 
     ISENTO(new ImpostoDeRendaIsento()),
-    SETE_E_MEIO(new ImpostoDeRendaMedioBaixo()),
-    QUINZE(new ImpostoDeRendaMedioAlto()),
-    VINTE_E_DOIS_E_MEIO(new ImpostoDeRendaAlto()),
-    VINTE_E_SETE_E_MEIO(new ImpostoDeRendaTeto());
+    MEDIO_BAIXO(new ImpostoDeRendaMedioBaixo()),
+    MEDIO_ALTO(new ImpostoDeRendaMedioAlto()),
+    ALTO(new ImpostoDeRendaAlto()),
+    TETO(new ImpostoDeRendaTeto());
 
     private final CalculadoraImpostoDeRenda calculadoraImpostoDeRenda;
 
@@ -17,14 +17,18 @@ public enum TipoDoImpostoDeRenda {
         this.calculadoraImpostoDeRenda = calculadoraImpostoDeRenda;
     }
 
-    public static BigDecimal calcularImpostoDeRenda(BigDecimal valor) {
+    public static BigDecimal calcularImpostoDeRenda(BigDecimal salario) {
         return Arrays.stream(TipoDoImpostoDeRenda.values())
-                .map(i -> i.calcular(valor))
-                .findAny()
-                .orElseThrow(RuntimeException::new);
+                .filter(t -> t.deveAplicarPara(salario))
+                .findFirst()
+                .map(i -> i.efetuarCalculo(salario))
+                .orElseThrow(() -> new RuntimeException("Tipo de imposto de renda não encontrado"));
+    }
+    private boolean deveAplicarPara(BigDecimal salario) {
+        return calculadoraImpostoDeRenda.deveAplicarPara(salario);
     }
 
-    private BigDecimal calcular(BigDecimal salario) {
-        return calculadoraImpostoDeRenda.calcular(salario);
+    private BigDecimal efetuarCalculo(BigDecimal salario) {
+        return calculadoraImpostoDeRenda.efetuarCalculo(salario);
     }
 }

@@ -1,5 +1,6 @@
-package test.java.br.com.maria.imposto.renda;
+package br.com.maria.imposto.renda;
 
+import br.com.maria.imposto.renda.ImpostoDeRendaMedioAlto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -41,7 +42,6 @@ public class ImpostoDeRendaMedioAltoTest {
     @ParameterizedTest
     @CsvSource({
             "3751.05, 207.86",
-            "2826.65, 69.20",
             "2826.66, 69.20",
             "3000.80, 95.32",
     })
@@ -61,7 +61,7 @@ public class ImpostoDeRendaMedioAltoTest {
     @DisplayName("deve lancar excecao se o salario for maior que o valor maximo ou menor que o valor minimo")
     void calcula__deve_lancar_excecao_se_o_salario_for_maior_que_o_valor_maximo_ou_menor_que_o_valor_minimo(BigDecimal salario) {
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> new ImpostoDeRendaMedioAlto().calcular(salario))
+                .isThrownBy(() -> new ImpostoDeRendaMedioAlto().efetuarCalculo(salario))
                 .withMessage("Salario não se aplica para essa regra");
     }
 }

@@ -1,4 +1,4 @@
-package main.java.br.com.maria.imposto.renda;
+package br.com.maria.imposto.renda;
 
 import java.math.BigDecimal;
 
@@ -15,6 +15,7 @@ public class ImpostoDeRendaIsento implements CalculadoraImpostoDeRenda {
 
     @Override
     public BigDecimal efetuarCalculo(BigDecimal salario) {
+        if(!deveAplicarPara(salario)) throw new RuntimeException("Salario não se aplica para essa regra");
         return ZERO;
     }
 }
